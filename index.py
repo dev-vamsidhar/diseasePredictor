@@ -407,5 +407,5 @@ def NaiveBayes(psymptoms):
     else:
         return {"result": "not found"}
 
-
+app.run()
 # %%
