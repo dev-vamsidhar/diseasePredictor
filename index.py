@@ -5,6 +5,9 @@
 
 
 from tkinter import *
+from flask import Flask
+app = Flask(__name__)
+
 import numpy as np
 import pandas as pd
 
@@ -141,7 +144,7 @@ def DecisionTree():
 
     if (h=='yes'):
         t1.delete("1.0", END)
-        t1.insert(END, disease[a])
+        t1.insert(END,disease[a])
         p = a
     else:
         t1.delete("1.0", END)
@@ -305,14 +308,20 @@ def Hospital():
             t4.delete("1.0",END)
             t4.insert(END,"Incorrect")
         
-        
+
+
+@app.route('/')
+def hello_world():
+   return 'Hello World'
+
         
         
 
+app.run()
 
 # In[15]:
 
-
+print("root starting")
 root = Tk()
 root.configure(background='black')
 
@@ -326,7 +335,8 @@ Symptom3 = StringVar()
 Symptom3.set("Select Here")
 
 Symptom4 = StringVar()
-Symptom4.set("Select Here")
+Symptom4.set("Select Here sym")
+
 
 Symptom5 = StringVar()
 Symptom5.set("Select Here")
@@ -430,8 +440,7 @@ t4 = Text(root,height = 1,width = 100,bg = "pink",fg = "blue")
 t4.config(font=("Times",15,"bold italic"))
 t4.grid(row=22,column =1 ,padx = 15)
 
-root.mainloop()
-
+# root.mainloop()
 
 
 
