@@ -3,7 +3,9 @@ from flask import request
 
 app = Flask(__name__)
 
-
+p = 0
+q= 0 
+r = 0
 @app.route("/")
 def hello_world():
     sym1 = request.args.get("s1")
@@ -11,11 +13,12 @@ def hello_world():
     sym3 = request.args.get("s3")
     sym4 = request.args.get("s4")
     sym5 = request.args.get("s5")
+    loc = request.args.get("location")
     symptoms = [sym1, sym2, sym3, sym4, sym5]
     prediction1 = DecisionTree(symptoms)
     prediction2 = randomforest(symptoms)
     prediction3 = NaiveBayes(symptoms)
-    return {"result": [prediction1, prediction2, prediction3], "param":symptoms}
+    return {"result": [prediction1, prediction2, prediction3], "param":symptoms,"hosipital":Hospital(loc)}
 
 
 import numpy as np
@@ -406,6 +409,99 @@ def NaiveBayes(psymptoms):
         r = a
     else:
         return {"result": "not found"}
+
+
+
+
+def Hospital(loc):
+
+    city = loc
+    if city == "Bangalore":
+        if p == q:
+            return Bangalore[p]
+
+        elif q == r:
+            
+            return Bangalore[q]
+
+        elif p == r:
+            
+            return Bangalore[r]
+
+        else:
+            
+            return "Incorrect"
+            
+    elif city == "Chennai":
+        if p == q:
+            
+            return Chennai[p]
+
+        elif q == r:
+            
+            return Chennai[q]
+
+        elif p == r:
+            
+            return Chennai[r]
+
+        else:
+            
+            return "Incorrect"
+            
+    elif city == "Hyderabad":
+        if p == q:
+            
+            return Hyderabad[p]
+
+        elif q == r:
+            
+            return Hyderabad[q]
+
+        elif p == r:
+            
+            return Hyderabad[r]
+
+        else:
+            
+            return "Incorrect"
+    
+    elif city == "Tirupati":
+        if p == q:
+            
+            return Tirupati[p]
+
+        elif q == r:
+            
+            return Tirupati[q]
+
+        elif p == r:
+            
+            return Tirupati[r]
+
+        else:
+            
+            return "Incorrect"
+            
+    elif city == "Vizag":
+        if p == q:
+            
+            return Vizag[p]
+
+        elif q == r:
+            
+            return Vizag[q]
+
+        elif p == r:
+            
+            return Vizag[r]
+
+        else:
+            return "Incorrect"
+    else:
+        return "no"
+        
+
 
 app.run()
 # %%

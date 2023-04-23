@@ -10,7 +10,9 @@ app = Flask(__name__)
 
 import numpy as np
 import pandas as pd
-
+p = 0
+q= 0 
+r = 0
 l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
 'yellowing_of_eyes','acute_liver_failure','fluid_overload','swelling_of_stomach',
 'swelled_lymph_nodes','malaise','blurred_and_distorted_vision','phlegm','throat_irritation',
@@ -130,7 +132,6 @@ def DecisionTree():
         for z in psymptoms:
             if(z==l1[k]):
                 l2[k]=1
-    global p
     inputtest = [l2]
     predict = clf3.predict(inputtest)
     predicted=predict[0]
@@ -166,7 +167,7 @@ def randomforest():
         for z in psymptoms:
             if(z==l1[k]):
                 l2[k]=1
-    global q
+    
     inputtest = [l2]
     predict = clf4.predict(inputtest)
     predicted=predict[0]
@@ -200,7 +201,7 @@ def NaiveBayes():
         for z in psymptoms:
             if(z==l1[k]):
                 l2[k]=1
-    global r
+   
     inputtest = [l2]
     predict = gnb.predict(inputtest)
     predicted=predict[0]
@@ -316,8 +317,6 @@ def hello_world():
 
         
         
-
-app.run()
 
 # In[15]:
 
@@ -440,7 +439,7 @@ t4 = Text(root,height = 1,width = 100,bg = "pink",fg = "blue")
 t4.config(font=("Times",15,"bold italic"))
 t4.grid(row=22,column =1 ,padx = 15)
 
-# root.mainloop()
+root.mainloop()
 
 
 
