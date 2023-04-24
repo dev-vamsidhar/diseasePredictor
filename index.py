@@ -499,7 +499,7 @@ def Hospital(loc):
         else:
             return "Incorrect"
     else:
-        return "no"
+        return "Incorrect"
         
 
 
